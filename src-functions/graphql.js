@@ -8,7 +8,7 @@ const user = async (parent, args, context) => {
 
 const transactions = async (parent, args, context) => {
   const pageSize = 100;
-  return await pocketsmithGetResult(context.token, `users/${parent.id}/transactions?per_page=${pageSize}`);
+  return await pocketsmithGetResult(context.token, `users/${parent.id}/transactions?per_page=${pageSize}&end_date=2019-03-27&start_date=2019-03-25`);
 };
 
 /**
@@ -40,15 +40,33 @@ const typeDefs = gql`
   }
   
   type Transaction {
+    id: Int
+    date: String
+    payee: String
+    original_payee: String
+    upload_source: String
     amount: Float
     type: String
     memo: String
     category: Category
+    transaction_account: TransactionAccount
+    note: String
+    status: String
+    is_transfer: Boolean
+    labels: [String]
   }
   
   type Category {
     id: Int
     title: String
+    is_transfer: Boolean
+    colour: String
+  }
+  
+  type TransactionAccount {
+    id: Int
+    name: String
+    number: String
   }
   
   type Query {
