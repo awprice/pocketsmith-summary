@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve-netlify": "netlify-lambda serve src-functions",
-    "serve": "netlify-lambda serve src-functions & vue-cli-service serve",
+    "serve-netlify": "rm -rf functions/* && netlify-lambda serve src-functions",
+    "serve": "npm run serve-netlify & vue-cli-service serve",
     "build": "netlify-lambda build src-functions && vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.4.8",
+    "axios": "^0.18.0",
+    "bufferutil": "^4.0.1",
     "graphql": "^14.2.0",
+    "lodash": "^4.17.11",
     "netlify-lambda": "^1.4.3",
+    "utf-8-validate": "^5.0.2",
     "vue": "^2.6.6",
     "vue-apollo": "^3.0.0-beta.11"
   },
