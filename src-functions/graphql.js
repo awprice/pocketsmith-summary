@@ -108,11 +108,11 @@ const user = async (parent, args, context) => {
  * @param context
  * @returns {Promise<Array|*>}
  */
-const transactions = async (parent, { endDate, startDate }, context) => {
-  if (!endDate.length || !startDate.length) {
+const transactions = async (parent, { end_date, start_date }, context) => { // eslint-disable-line
+  if (!end_date.length || !start_date.length) {
     return Promise.reject(new Error('Invalid end_date or start_date argument'));
   }
-  const url = `${endpoint}/v2/users/${parent.id}/transactions?per_page=${pageSize}&end_date=${endDate}&start_date=${startDate}`;
+  const url = `${endpoint}/v2/users/${parent.id}/transactions?per_page=${pageSize}&end_date=${end_date}&start_date=${start_date}`; // eslint-disable-line
   return getResultsPaginated(context.token, url, 3600);
 };
 
