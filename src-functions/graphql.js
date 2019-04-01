@@ -1,6 +1,6 @@
 import {ApolloServer, gql} from 'apollo-server-lambda';
 import axios from 'axios';
-import get from 'lodash/get'
+import get from 'lodash/get';
 import parseLinkHeader from 'parse-link-header';
 import cacache from 'cacache/en';
 import crypto from 'crypto';
@@ -17,7 +17,7 @@ const defaultExpiry = 60;
  * @returns {Promise<*>}
  */
 const user = async (parent, args, context) => {
-  const res = await pocketsmithGetResult(context.token, `${ endpoint }/v2/me`, 300);
+  const res = await pocketsmithGetResult(context.token, `${endpoint}/v2/me`, 300);
   return res.data;
 };
 
@@ -31,7 +31,7 @@ const transactions = async (parent, {end_date, start_date}, context) => {
   if (!end_date.length || !start_date.length) {
     return Promise.reject(new Error('Invalid end_date or start_date argument'));
   }
-  const url = `${ endpoint }/v2/users/${ parent.id }/transactions?per_page=${ pageSize }&end_date=${ end_date }&start_date=${ start_date }`;
+  const url = `${endpoint}/v2/users/${parent.id}/transactions?per_page=${pageSize}&end_date=${end_date}&start_date=${start_date}`;
   return await getResultsPaginated(context.token, url, defaultExpiry);
 };
 
@@ -72,7 +72,7 @@ const pocketsmithGetResult = async (token, url, expiry = defaultExpiry) => {
   const headers = {
     'X-Developer-Key': token,
   };
-  console.log(`Sending request to ${ url }`); // eslint-disable-line
+  console.log(`Sending request to ${url}`); // eslint-disable-line
   return axios(url, {headers})
     .then(async (res) => {
       const data = {data: res.data, headers: res.headers};
