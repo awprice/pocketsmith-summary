@@ -86,7 +86,9 @@ export default {
     const results = [];
     transactions.filter((transaction) => {
       const date = moment(transaction.date);
-      const inRange = date.isSame(endDate) || date.isBetween(startDate, endDate);
+      const inRange = date.isSame(endDate, 'day')
+        || date.isSame(startDate, 'day')
+        || date.isBetween(startDate, endDate);
       if (!inRange) {
         return false;
       }

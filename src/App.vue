@@ -3,10 +3,7 @@
     <page>
       <div v-if="developerKey">
         <controls/>
-        <transactions-table
-          end-date="2019-03-30"
-          :analysis-settings="analysisSettings"
-        />
+        <transaction-analysis-holder/>
       </div>
       <div v-if="!developerKey" class="text-center">
         <el-alert
@@ -23,7 +20,7 @@
 import { mapGetters } from 'vuex';
 import Page from './components/Page';
 import Controls from './components/Controls';
-import TransactionsTable from './components/TransactionsTable';
+import TransactionAnalysisHolder from './components/TransactionAnalysisHolder';
 
 export default {
   name: 'app',
@@ -41,7 +38,7 @@ export default {
     }),
   },
   components: {
-    TransactionsTable,
+    TransactionAnalysisHolder,
     Page,
     Controls,
   },

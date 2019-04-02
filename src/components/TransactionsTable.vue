@@ -3,7 +3,8 @@
     <el-table
       class="category-summary-table"
       :data="categorySummaries"
-      :default-sort = "{prop: 'amount', order: 'descending'}"
+      :default-sort="{prop: 'amount', order: 'descending'}"
+      v-loading="loading"
     >
       <el-table-column type="expand">
         <template slot-scope="props">
@@ -33,95 +34,25 @@
 </template>
 
 <script>
-import gql from 'graphql-tag';
-import moment from 'moment';
-import get from 'lodash/get';
-import { mapGetters } from 'vuex';
-import TransactionAnalysis from '../helpers/TransactionAnalysis';
 import CategoryTransactionTable from './CategoryTransactionsTable';
 import Amount from './Amount';
 
 export default {
   name: 'TransactionsTable',
   props: {
-    endDate: {
-      type: String,
+    categorySummaries: {
+      type: Array,
       required: true,
     },
-    analysisSettings: {
-      type: Object,
+    loading: {
+      type: Boolean,
       required: true,
     },
-    ignoreTransfers: {
-      type: Boolean,
-      default: true,
+    queryEndDateMoment: {
+      required: true,
     },
-    ignorePending: {
-      type: Boolean,
-      default: true,
-    },
-  },
-  computed: {
-
-    ...mapGetters({
-      compareOption: 'app/compareOption',
-    }),
-
-    compareDates() {
-      return TransactionAnalysis.GetCompareDateRange(this.compareOption);
-    },
-
-    queryEndDateMoment() {
-      return moment(this.compareDates.end);
-    },
-
-    /**
-       * @returns {moment.Moment}
-       */
-    queryStartDateMoment() {
-      return moment(this.compareDates.start);
-    },
-
-    /**
-       * @returns {*|Array}
-       */
-    categorySummaries() {
-      const transactions = get(this, 'user.transactions', []);
-      return TransactionAnalysis.GetCategorySummaries(
-        transactions,
-        this.queryEndDateMoment,
-        this.queryStartDateMoment,
-        this.ignorePending,
-        this.ignoreTransfers
-      );
-    },
-  },
-  apollo: {
-    user: {
-      query: gql`
-          query user($end_date: String!, $start_date: String!) {
-            user {
-              id
-              transactions(end_date: $end_date, start_date: $start_date) {
-                amount
-                status
-                is_transfer
-                date
-                payee
-                category {
-                  id
-                  title
-                }
-              }
-            }
-          }
-        `,
-      variables() {
-        return {
-          end_date: this.queryEndDateMoment.format('YYYY-MM-DD'),
-          start_date: this.queryStartDateMoment.format('YYYY-MM-DD'),
-        };
-      },
+    queryStartDateMoment: {
+      required: true,
     },
   },
   components: {

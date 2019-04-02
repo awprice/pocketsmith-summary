@@ -57,7 +57,6 @@ export default {
 
   .title {
     margin: 0 0 10px;
-    color: #333;
     display: inline-block;
   }
 

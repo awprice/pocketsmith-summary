@@ -51,7 +51,6 @@ export default {
   h3 {
     margin-top: 0;
     display: inline-block;
-    color: #333;
   }
 
   .comparison-input {
