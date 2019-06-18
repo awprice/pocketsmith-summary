@@ -16,9 +16,11 @@
     "bufferutil": "^4.0.1",
     "cacache": "^11.3.2",
     "element-ui": "^1.4.13",
+    "encoding": "^0.1.12",
     "eslint-config-airbnb": "^17.1.0",
     "format-currency": "^1.0.0",
     "graphql": "^14.2.0",
+    "graphql-tag": "^2.9.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "netlify-lambda": "^1.4.3",
@@ -28,10 +30,9 @@
     "utf-8-validate": "^5.0.2",
     "vue": "^2.6.6",
     "vue-apollo": "^3.0.0-beta.11",
-    "vuex": "^3.1.0",
-    "vuex-persistedstate": "^2.5.4",
     "vue-cli-plugin-apollo": "^0.19.2",
-    "graphql-tag": "^2.9.0"
+    "vuex": "^3.1.0",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.3",
