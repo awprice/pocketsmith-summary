@@ -12,7 +12,7 @@
     "@mdi/font": "^3.5.95",
     "apollo-link": "^1.2.11",
     "apollo-server-lambda": "^2.4.8",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "bufferutil": "^4.0.1",
     "cacache": "^11.3.2",
     "element-ui": "^1.4.13",
@@ -37,7 +37,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.3",
     "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-service": "^3.5.3",
+    "@vue/cli-service": "^3.8.4",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
