@@ -1,4 +1,5 @@
 import moment from 'moment';
+import momentFquarter from 'moment-fquarter';
 
 export default {
 
@@ -15,6 +16,26 @@ export default {
           return {
             start: moment().subtract(7, 'days'),
             end: moment(),
+          };
+        },
+      },
+      {
+        key: 'this_week',
+        label: 'this week',
+        dates() {
+          return {
+            start: moment().startOf('week'),
+            end: moment().endOf('week'),
+          };
+        },
+      },
+      {
+        key: 'last_week',
+        label: 'last week',
+        dates() {
+          return {
+            start: moment().subtract(1, 'weeks').startOf('week'),
+            end: moment().subtract(1, 'weeks').endOf('week'),
           };
         },
       },
@@ -39,8 +60,8 @@ export default {
         },
       },
       {
-        key: 'current_month',
-        label: 'the current month',
+        key: 'this_month',
+        label: 'this month',
         dates() {
           return {
             start: moment().startOf('month'),
@@ -58,7 +79,73 @@ export default {
           };
         },
       },
+      {
+        key: 'this_quarter',
+        label: 'this quarter',
+        dates() {
+          return {
+            start: moment().startOf('quarter'),
+            end: moment().endOf('quarter'),
+          };
+        },
+      },
+      {
+        key: 'last_quarter',
+        label: 'last quarter',
+        dates() {
+          return {
+            start: moment().subtract(1, 'quarters').startOf('quarter'),
+            end: moment().subtract(1, 'quarters').endOf('quarter'),
+          };
+        },
+      },
+      {
+        key: 'this_year',
+        label: 'this year',
+        dates() {
+          return {
+            start: moment().startOf('year'),
+            end: moment().endOf('year'),
+          };
+        },
+      },
+      {
+        key: 'last_year',
+        label: 'last year',
+        dates() {
+          return {
+            start: moment().subtract(1, 'years').startOf('year'),
+            end: moment().subtract(1, 'years').endOf('year'),
+          };
+        },
+      },
+      {
+        key: 'this_financial_year',
+        label: 'this financial year',
+        dates: function () {
+          return this.CalculateFinancialYear(moment());
+        }.bind(this),
+      },
+      {
+        key: 'last_financial_year',
+        label: 'last financial year',
+        dates: function () {
+          return this.CalculateFinancialYear(moment().subtract(1, 'year'));
+        }.bind(this),
+      },
     ];
+  },
+
+  /**
+   * @param {moment.Moment} currentDate
+   * @returns {{start: moment.Moment, end: moment.Moment}}
+   * @constructor
+   */
+  CalculateFinancialYear(currentDate) {
+    const currentFQuarter = momentFquarter(currentDate).fquarter(7);
+    const start = moment(currentDate).subtract(currentFQuarter.quarter - 1, 'quarter').startOf('quarter');
+    const end = moment(currentDate).add(4 - currentFQuarter.quarter, 'quarter').endOf('quarter');
+    return {start, end };
   },
 
   /**
