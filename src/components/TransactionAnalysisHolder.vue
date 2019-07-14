@@ -12,6 +12,9 @@
       :query-start-date-moment="queryStartDateMoment"
       :query-end-date-moment="queryEndDateMoment"
     />
+    <chart-panel
+      :category-summaries="categorySummaries"
+    />
   </div>
 </template>
 
@@ -23,10 +26,11 @@ import get from 'lodash/get';
 import TransactionAnalysisHelper from '../helpers/TransactionAnalysis';
 import TransactionsTable from './TransactionsTable';
 import SummaryPanel from './SummaryPanel';
+import ChartPanel from './ChartPanel';
 
 export default {
   name: 'TransactionAnalysisHolder',
-  components: { SummaryPanel, TransactionsTable },
+  components: { ChartPanel, SummaryPanel, TransactionsTable },
   computed: {
     ...mapGetters({
       compareOption: 'app/compareOption',
