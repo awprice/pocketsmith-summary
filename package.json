@@ -11,7 +11,7 @@
   "dependencies": {
     "@mdi/font": "^3.9.97",
     "apollo-link": "^1.2.13",
-    "apollo-server-lambda": "^2.9.16",
+    "apollo-server-lambda": "^2.14.2",
     "axios": "^0.19.2",
     "bufferutil": "^4.0.1",
     "cacache": "^11.3.3",
