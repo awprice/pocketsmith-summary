@@ -23,7 +23,7 @@
     "graphql": "^14.6.0",
     "graphql-tag": "^2.9.0",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-fquarter": "^1.0.0",
     "netlify-lambda": "^1.6.3",
     "node-sass": "^4.13.1",
