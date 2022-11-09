@@ -26,7 +26,7 @@
     "moment": "^2.29.4",
     "moment-fquarter": "^1.0.0",
     "netlify-lambda": "^1.6.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.3",
     "parse-link-header": "^2.0.0",
     "randomcolor": "^0.5.4",
     "sass-loader": "^7.3.1",
